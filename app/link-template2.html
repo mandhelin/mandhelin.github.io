@@ -1,0 +1,21 @@
+<div class="col-sm-3">
+    <label>省</label>
+    <select ng-model="sel1" class="form-control">
+        <!--<option value="0">&#45;&#45;请选择省&#45;&#45;</option>-->
+        <option ng-repeat="i in proList track by i.code" value="{{i.code}}">{{i.name}}</option>
+    </select>
+</div>
+<div class="col-sm-3">
+    <label>市</label>
+    <select ng-model="sel2" class="form-control">
+        <!--<option value="0">&#45;&#45;请选择市&#45;&#45;</option>-->
+        <option ng-repeat="i in cityList track by i.code" value="{{i.code}}">{{i.name}}</option>
+    </select>
+</div>
+<div class="col-sm-3">
+    <label>区/县</label>
+    <select ng-model="sel3" class="form-control">
+        <!--<option value="0">&#45;&#45;请选择区&#45;&#45;</option>-->
+        <option ng-repeat="i in townList track by i.code" value="{{i.code}}">{{i.name}}</option>
+    </select>
+</div>

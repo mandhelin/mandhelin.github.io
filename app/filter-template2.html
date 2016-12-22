@@ -1,0 +1,49 @@
+<h1>Hello Custom-Filter!</h1>
+<div class="row">
+    <div class="col-sm-3">
+        <label>显示的数量: </label>
+        <input class="form-control" type="text" ng-model="size">
+    </div>
+    <div class="col-sm-3">
+        <label>开始的位置: </label>
+        <input type="text" class="form-control" ng-model="start">
+    </div>
+    <div class="col-sm-4">
+        <label>选择排序方式:</label>
+        <select class="form-control" ng-model="sel">
+            <option value="id">ID</option>
+            <option value="rname">NAME</option>
+            <option value="hname">HOUSE</option>
+        </select>
+    </div>
+</div>
+<hr/>
+<table class="table table-responsive table-hover">
+    <caption>人物姓名</caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>{{'NAME' | lowercase}}</th>
+        <th>HOUSE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="i in list | orderBy:sel | arrFilter: size : start track by i.id "
+        ng-class="{0:'',1:'info',2:'success',3:'danger',4:'warning',5:'active'}[$index%6]">
+        <td>{{i.id-0 | testFilter }}</td>
+        <td>{{i.rname}}</td>
+        <td>{{i.hname}}</td>
+    </tr>
+    </tbody>
+</table>
+<div class="text-center">
+    <ul class="pagination">
+        <li ng-class="{1:'disabled'}[page]"><a ng-click="changePage(page-1)">&laquo;</a></li>
+        <!--<li class="active"><a href="#">1</a></li>-->
+        <!--<li><a href="#">2</a></li>-->
+        <li ng-repeat="i in arrPage track by $index"
+            ng-click="changePage(i)"
+            ng-class="{true:'active'}[$index==page-1]"><a>{{i}}</a></li>
+        <li ng-class="{true:'disabled'}[page==arrPage.length]"><a ng-click="changePage(page+1)">&raquo;</a></li>
+    </ul>
+</div>

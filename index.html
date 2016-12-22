@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <style>
+        .pagination {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .pagination li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="app" class="container-fluid">
+    <div class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="" ui-sref-active="active"><a ui-sref="link">三级联动</a></li>
+            <!--<li class="" ui-sref-active="active"><a ui-sref="custom-directive">自定义指令</a></li>-->
+            <li class="" ui-sref-active="active"><a ui-sref="filter">过滤器</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9" ui-view></div>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script src="app/link-app.js"></script>
+<script>
+    var result = JSON.parse('[{"id":"5","rname":"\u7f57\u67cf","hname":"\u53f2\u5854\u514b"},{"id":"6","rname":"\u827e\u5fb7","hname":"\u53f2\u5854\u514b"},{"id":"7","rname":"\u73ca\u838e","hname":"\u53f2\u5854\u514b"},{"id":"8","rname":"\u827e\u8389\u4e9a","hname":"\u53f2\u5854\u514b"},{"id":"9","rname":"\u5e03\u5170\u767b","hname":"\u53f2\u5854\u514b"},{"id":"10","rname":"\u743c\u6069","hname":"\u96ea\u8bfa"},{"id":"11","rname":"\u6cf0\u6e29","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"12","rname":"\u8a79\u59c6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"13","rname":"\u745f\u66e6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"14","rname":"\u63d0\u91cc\u6602","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"15","rname":"\u7f57\u67cf","hname":"\u53f2\u5854\u514b"},{"id":"16","rname":"\u827e\u5fb7","hname":"\u53f2\u5854\u514b"},{"id":"17","rname":"\u73ca\u838e","hname":"\u53f2\u5854\u514b"},{"id":"18","rname":"\u827e\u8389\u4e9a","hname":"\u53f2\u5854\u514b"},{"id":"19","rname":"\u5e03\u5170\u767b","hname":"\u53f2\u5854\u514b"},{"id":"20","rname":"\u743c\u6069","hname":"\u96ea\u8bfa"},{"id":"21","rname":"\u6cf0\u6e29","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"22","rname":"\u8a79\u59c6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"23","rname":"\u745f\u66e6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"24","rname":"\u63d0\u91cc\u6602","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"25","rname":"\u7f57\u67cf","hname":"\u53f2\u5854\u514b"},{"id":"26","rname":"\u827e\u5fb7","hname":"\u53f2\u5854\u514b"},{"id":"27","rname":"\u73ca\u838e","hname":"\u53f2\u5854\u514b"},{"id":"28","rname":"\u827e\u8389\u4e9a","hname":"\u53f2\u5854\u514b"},{"id":"29","rname":"\u5e03\u5170\u767b","hname":"\u53f2\u5854\u514b"},{"id":"30","rname":"\u743c\u6069","hname":"\u96ea\u8bfa"},{"id":"31","rname":"\u6cf0\u6e29","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"32","rname":"\u8a79\u59c6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"33","rname":"\u745f\u66e6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"34","rname":"\u63d0\u91cc\u6602","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"35","rname":"\u7f57\u67cf","hname":"\u53f2\u5854\u514b"},{"id":"36","rname":"\u827e\u5fb7","hname":"\u53f2\u5854\u514b"},{"id":"37","rname":"\u73ca\u838e","hname":"\u53f2\u5854\u514b"},{"id":"38","rname":"\u827e\u8389\u4e9a","hname":"\u53f2\u5854\u514b"},{"id":"39","rname":"\u5e03\u5170\u767b","hname":"\u53f2\u5854\u514b"},{"id":"40","rname":"\u743c\u6069","hname":"\u96ea\u8bfa"},{"id":"41","rname":"\u6cf0\u6e29","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"42","rname":"\u8a79\u59c6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"43","rname":"\u745f\u66e6","hname":"\u5170\u5c3c\u65af\u7279"},{"id":"44","rname":"\u63d0\u91cc\u6602","hname":"\u5170\u5c3c\u65af\u7279"}]')
+    angular.module('app', ['ui.router', 'linkApp'])
+            .config(function ($stateProvider, $urlRouterProvider) {
+                $urlRouterProvider.otherwise('/filter');
+                $stateProvider
+                        .state('link', {
+                            url: '/link',
+                            templateUrl: 'link-template2.html',
+                            controller: 'ctrl',
+                            resolve: {
+                                proList: function (appService) {
+                                    return appService.getProvince();
+                                },
+                                cityList: function (appService, proList) {
+                                    return appService.getCity(proList.data[0].code);
+                                },
+                                townList: function (appService, cityList) {
+                                    return appService.getTown(cityList.data[0].code);
+                                }
+                            }
+                        })
+                        .state('filter', {
+                            url: '/filter',
+                            templateUrl: 'app/filter-template2.html',
+                            controller: 'filter'
+                        })
+            })
+            .controller('filter', function ($scope, $http) {
+                $scope.sel = 'rname';
+                $scope.size = 5;
+                $scope.start = 0;
+                $scope.page = 1;
+                $scope.list = result;
+                var count = result.length;
+                var countPage = Math.ceil(count / $scope.size);
+                var arr = [];
+                for (var i = 0; i < countPage; i++) {
+                    arr.push(i + 1);
+                }
+                $scope.arrPage = arr;
+                $scope.$watch('size', function (newVal) {
+                    var countPage = Math.ceil($scope.list.length / newVal);
+                    var arr = [];
+                    for (var i = 0; i < countPage; i++) {
+                        arr.push(i + 1);
+                    }
+                    $scope.arrPage = arr;
+
+                    $scope.page = Math.floor($scope.start / newVal) + 1
+                });
+
+                $scope.changePage = function (page) {
+                    if (page == 0 || $scope.arrPage.length + 1 == page)return;
+                    $scope.page = page;
+                    $scope.start = (page - 1) * $scope.size;
+                }
+            })
+            .filter('testFilter', function () {
+                return function (data) {
+                    return data;
+                }
+            })
+            .filter('arrFilter', function () {
+                return function (data, size, start) {
+                    if (data == undefined)return;
+                    return data.splice(start, size);
+                }
+            })
+</script>
+</body>
+</html>
